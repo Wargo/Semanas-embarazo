@@ -18,13 +18,13 @@ var tab1 = Titanium.UI.createTab({
 
 
 var win2 = Titanium.UI.createWindow({  
-    title:'Vídeo',
+    title:'Fecha',
     backgroundColor:'#fff',
     url:'window2.js'
 });
 var tab2 = Titanium.UI.createTab({  
     icon:'KS_nav_ui.png',
-    title:'Vídeo',
+    title:'Fecha',
     window:win2
 });
 

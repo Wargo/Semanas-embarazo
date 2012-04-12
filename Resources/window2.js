@@ -1,55 +1,40 @@
 var win = Titanium.UI.currentWindow;
 
+var date = null;
+
 var label = Titanium.UI.createLabel({
 	color:'#999',
-	text:'Coge foto',
+	text:'Selecciona tu fecha de parto',
 	font:{fontSize:20,fontFamily:'Helvetica Neue'},
 	textAlign:'center',
-	bottom:20,
-	width:'auto'
+	top:20,
+	width:'auto',
+	height:'auto'
 });
 
-//win.add(label);
+var picker = Titanium.UI.createPicker({
+	type:Titanium.UI.PICKER_TYPE_DATE,
+	top:50
+});
 
 var button = Titanium.UI.createButton({
-	title:'Capturar vídeo',
-	width:170,
-	height:80,
-	bottom:20
-})
-win.add(button);
-
-button.addEventListener('click', function(e) {
-	Titanium.Media.showCamera({
-		success:function(e) {
-			if (e.mediaType === Titanium.Media.MEDIA_TYPE_VIDEO) {
-				var w = Titanium.UI.createWindow({
-					title:'Nuevo vídeo',
-					backgroundColor:'#000000'
-				});
-				var videoPlayer = Titanium.Media.createVideoPlayer({
-					media:e.media
-				});
-				w.add(videoPlayer);
-				
-				videoPlayer.addEventListener('complete', function(e) {
-					w.remove(videoPlayer);
-					videoPlayer = null;
-					w.close();
-				});
-			}
-		},
-		error:function(e) {
-			alert('Error');
-		},
-		cancel:function(e) {
-			alert('Cancelado');
-		},
-		allowEditing:true,
-		saveToPhotoGallery:true,
-		mediaTypes:[Titanium.Media.MEDIA_TYPE_VIDEO],
-		videoQuality:Titanium.Media.QUALITY_HIGH
-	})
+	title:'Guardar',
+	bottom:10,
+	textAlign:'center',
+	width:150,
+	height:40
 });
 
 
+win.add(label);
+win.add(picker);
+win.add(button);
+
+
+picker.addEventListener('change', function(e) {
+	date = e.value.toLocaleString();
+});
+
+button.addEventListener('click', function(e) {
+	alert(date);
+});

@@ -41,7 +41,7 @@ button.addEventListener('click', function(e) {
 		},
 		allowEditing:true,
 		saveToPhotoGallery:true,
-		mediaTypes:[Titanium.Media.MEDIA_TYPE_PHOTO, Titanium.Media.MEDIA_TYPE_VIDEO],
+		mediaTypes:[Titanium.Media.MEDIA_TYPE_PHOTO],
 		videoQuality:Titanium.Media.QUALITY_HIGH
 	})
 });

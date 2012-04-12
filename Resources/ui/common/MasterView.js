@@ -5,18 +5,18 @@ function MasterView() {
 	
 	//some dummy data for our table view
 	var tableData = [
-		{title:'Semana 1', description:'Primeros pasos\r\ndel óvulo fertilizado', hasChild:false},
-		{title:'Semana 2', description:'Primeras formas. El tubo neural', hasChild:false},
-		{title:'Semana 3', description:'Los primeros órganos empiezan a formarse. Las maravillosas células del corazón', hasChild:false},
-		{title:'Semana 4', description:'El crecimiento se acelera', hasChild:false},
-		{title:'Semana 5', description:'Un pequeño gran estirón', hasChild:false},
-		{title:'Semana 6', description:'Una cabeza grandota', hasChild:false},
-		{title:'Semana 7', description:'Primeros pasos del óvulo fertilizado', hasChild:false},
-		{title:'Semana 8', description:'Primeras formas. El tubo neural', hasChild:false},
-		{title:'Semana 9', description:'Los primeros órganos empiezan a formarse. Las maravillosas células del corazón', hasChild:false},
-		{title:'Semana 10', description:'El crecimiento se acelera', hasChild:false},
-		{title:'Semana 11', description:'Un pequeño gran estirón', hasChild:false},
-		{title:'Semana 12', description:'Una cabeza grandota', hasChild:false}
+		{title:'Semana 1', content:'Primeros pasos\r\ndel óvulo fertilizado', hasChild:true},
+		{title:'Semana 2', content:'Primeras formas. El tubo neural', hasChild:true},
+		{title:'Semana 3', content:'Los primeros órganos empiezan a formarse. Las maravillosas células del corazón', hasChild:true},
+		{title:'Semana 4', content:'El crecimiento se acelera', hasChild:true},
+		{title:'Semana 5', content:'Un pequeño gran estirón', hasChild:true},
+		{title:'Semana 6', content:'Una cabeza grandota', hasChild:true},
+		{title:'Semana 7', content:'Primeros pasos del óvulo fertilizado', hasChild:true},
+		{title:'Semana 8', content:'Primeras formas. El tubo neural', hasChild:true},
+		{title:'Semana 9', content:'Los primeros órganos empiezan a formarse. Las maravillosas células del corazón', hasChild:true},
+		{title:'Semana 10', content:'El crecimiento se acelera', hasChild:true},
+		{title:'Semana 11', content:'Un pequeño gran estirón', hasChild:true},
+		{title:'Semana 12', content:'Una cabeza grandota', hasChild:true}
 	];
 	
 	var table = Ti.UI.createTableView({
@@ -28,7 +28,8 @@ function MasterView() {
 	table.addEventListener('click', function(e) {
 		self.fireEvent('itemSelected', {
 			name:e.rowData.title,
-			description:e.rowData.description
+			title:e.rowData.title,
+			content:e.rowData.content
 		});
 	});
 	

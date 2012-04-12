@@ -7,6 +7,8 @@ function ApplicationWindow() {
 	var self = Ti.UI.createWindow({
 		backgroundColor:'#ffffff'
 	});
+	
+	var self = Titanium.UI.currentWindow;
 		
 	//construct UI
 	var masterView = new MasterView(),
@@ -20,7 +22,7 @@ function ApplicationWindow() {
 	
 	//create detail view container
 	var detailContainerWindow = Ti.UI.createWindow({
-		title:'Detalles de la semana'
+		//title:'Detalles de la semana'
 	});
 	detailContainerWindow.add(detailView);
 	
