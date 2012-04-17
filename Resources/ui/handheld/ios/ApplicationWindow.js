@@ -22,7 +22,7 @@ function ApplicationWindow() {
 	
 	//create detail view container
 	var detailContainerWindow = Ti.UI.createWindow({
-		//title:'Detalles de la semana'
+		title:'Detalles de la semana'
 	});
 	detailContainerWindow.add(detailView);
 	
@@ -35,6 +35,7 @@ function ApplicationWindow() {
 	//add behavior for master view
 	masterView.addEventListener('itemSelected', function(e) {
 		detailView.fireEvent('itemSelected',e);
+		detailContainerWindow.title = e.name; // Sobreescribe el título de la ventana hija
 		navGroup.open(detailContainerWindow);
 	});
 	

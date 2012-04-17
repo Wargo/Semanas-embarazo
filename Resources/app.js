@@ -18,7 +18,7 @@ var tab1 = Titanium.UI.createTab({
 
 
 var win2 = Titanium.UI.createWindow({  
-    title:'Fecha',
+    title:'Selecciona tu fecha de parto',
     backgroundColor:'#fff',
     url:'window2.js'
 });
@@ -31,6 +31,7 @@ var tab2 = Titanium.UI.createTab({
 
 var win3 = Titanium.UI.createWindow({  
     title:'Semanas',
+    navBarHidden:true,
     backgroundColor:'#fff',
     url:'window3.js'
 });

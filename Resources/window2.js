@@ -4,7 +4,7 @@ var date = null;
 
 var label = Titanium.UI.createLabel({
 	color:'#999',
-	text:'Selecciona tu fecha de parto',
+	text:null,
 	font:{fontSize:20,fontFamily:'Helvetica Neue'},
 	textAlign:'center',
 	top:20,
@@ -12,10 +12,20 @@ var label = Titanium.UI.createLabel({
 	height:'auto'
 });
 
+var saved_date = Ti.App.Properties.getString('date');
+
+if (saved_date) {
+	label.text = JSON.parse(saved_date);
+}
+
 var picker = Titanium.UI.createPicker({
 	type:Titanium.UI.PICKER_TYPE_DATE,
-	top:50
+	top:80
 });
+
+if (Ti.Platform.osname == 'android') {
+	picker.top = 200;
+}
 
 var button = Titanium.UI.createButton({
 	title:'Guardar',
@@ -24,7 +34,6 @@ var button = Titanium.UI.createButton({
 	width:150,
 	height:40
 });
-
 
 win.add(label);
 win.add(picker);
@@ -36,5 +45,7 @@ picker.addEventListener('change', function(e) {
 });
 
 button.addEventListener('click', function(e) {
-	alert(date);
+	Ti.App.Properties.setString('date', JSON.stringify(date));
+	label.text = date;
 });
+

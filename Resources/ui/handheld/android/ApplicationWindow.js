@@ -31,6 +31,7 @@ function ApplicationWindow() {
 	//add behavior for master view
 	masterView.addEventListener('itemSelected', function(e) {
 		detailView.fireEvent('itemSelected',e);
+		detailContainerWindow.title = e.name; // Sobreescribe el título de la ventana hija
 		detailContainerWindow.open();
 	});
 	

@@ -34,14 +34,20 @@ button.addEventListener('click', function(e) {
 			}
 		},
 		error:function(e) {
-			alert('Error');
+			var a = Titanium.UI.createAlertDialog({title:'Cámara'});
+			if (e.code == Titanium.Media.NO_CAMERA) {
+				a.setMessage('no camara');
+			} else {
+				a.setMessage('Error: ' + e.code);
+			}
+			a.show();
 		},
 		cancel:function(e) {
 			alert('Cancelado');
 		},
 		allowEditing:true,
 		saveToPhotoGallery:true,
-		mediaTypes:[Titanium.Media.MEDIA_TYPE_PHOTO],
+		mediaTypes:[Ti.Media.MEDIA_TYPE_VIDEO, Ti.Media.MEDIA_TYPE_PHOTO],
 		videoQuality:Titanium.Media.QUALITY_HIGH
 	})
 });

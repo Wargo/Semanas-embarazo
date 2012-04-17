@@ -3,21 +3,52 @@ function MasterView() {
 		backgroundColor:'white'
 	});
 	
-	//some dummy data for our table view
-	var tableData = [
-		{title:'Semana 1', content:'Primeros pasos\r\ndel óvulo fertilizado', hasChild:true},
-		{title:'Semana 2', content:'Primeras formas. El tubo neural', hasChild:true},
-		{title:'Semana 3', content:'Los primeros órganos empiezan a formarse. Las maravillosas células del corazón', hasChild:true},
-		{title:'Semana 4', content:'El crecimiento se acelera', hasChild:true},
-		{title:'Semana 5', content:'Un pequeño gran estirón', hasChild:true},
-		{title:'Semana 6', content:'Una cabeza grandota', hasChild:true},
-		{title:'Semana 7', content:'Primeros pasos del óvulo fertilizado', hasChild:true},
-		{title:'Semana 8', content:'Primeras formas. El tubo neural', hasChild:true},
-		{title:'Semana 9', content:'Los primeros órganos empiezan a formarse. Las maravillosas células del corazón', hasChild:true},
-		{title:'Semana 10', content:'El crecimiento se acelera', hasChild:true},
-		{title:'Semana 11', content:'Un pequeño gran estirón', hasChild:true},
-		{title:'Semana 12', content:'Una cabeza grandota', hasChild:true}
-	];
+	/*
+	 * Leyendo un XML online
+	 *
+	Titanium.Yahoo.yql(
+		'select * from xml where url = "http://elembarazo.net/semana/feed"',
+		function (e) {
+			//alert(e.data);
+		}
+	);
+	*/
+	
+	/*
+	 * Leyendo fichero remoto
+	 *
+	var url = 'http://www.google.com';
+	var url = 'prueba.js'; // No funciona
+	var client = Ti.Network.createHTTPClient({
+		onload: function(e) {
+			//alert(this.responseText);
+		},
+		onerror: function(e) {
+			//alert(e)
+		},
+		timeout: 5000
+	});
+	client.open('GET', url, true);
+	client.send();
+	*/
+	
+	
+	/*
+	 * Leyendo de un fichero local
+	 */
+	var readFile = Titanium.Filesystem.getFile(Titanium.Filesystem.resourcesDirectory, 'data.js');
+	var local_data = readFile.read();
+	data = eval(local_data.text); // se convierte en array
+	
+	/*
+	 * Guardando y leyendo fichero
+	 *
+	Ti.App.Properties.setString('data', JSON.stringify(data));
+	var data = Ti.App.Properties.getString('data', 'Los datos no han podido ser cargados');
+	data = JSON.parse(data);
+	*/
+	
+	var tableData = data
 	
 	var table = Ti.UI.createTableView({
 		data:tableData
@@ -29,7 +60,8 @@ function MasterView() {
 		self.fireEvent('itemSelected', {
 			name:e.rowData.title,
 			title:e.rowData.title,
-			content:e.rowData.content
+			content:e.rowData.content,
+			backgroundColor:'#FF0000'
 		});
 	});
 	
